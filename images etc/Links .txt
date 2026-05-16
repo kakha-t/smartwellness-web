@@ -1,0 +1,95 @@
+
+Fotos:
+https://www.pexels.com/search/wellness/
+https://pixabay.com/photos/balance-stones-stack-110850/
+https://unsplash.com/de/s/fotos/wellness
+
+
+Nahrungsmittel:
+https://www.bmel.de/DE/themen/ernaehrung/gesunde-ernaehrung/gesunde-ernaehrung_node.html
+https://www.gutekueche.de/gesunde-bio-rezepte
+https://www.eatbetter.de/nachhaltige-ernaehrung-tipps-tricks-fuer-den-alltag
+https://www.ndr.de/fernsehen/sendungen/die-ernaehrungsdocs/rezepte/index.html
+https://www.bzfe.de/
+https://eatsmarter.de/rezepte
+https://www.dge.de/gesunde-ernaehrung/gut-essen-und-trinken/dge-empfehlungen/
+
+Fitness 
+https://www.fitnessfirst.de/clubs
+https://www.clever-fit.com/de/
+https://www.fitx.de/
+https://www.kieser.de/
+
+Yoga, Pilates, Muskultrainin
+https://www.yogaeasy.de/artikel/yoga-fuer-anfaenger
+https://pilatesberlin.de/en/
+https://pilatesbee.de/
+https://www.fitnessoase-querfurt.de/gezieltes-muskeltraining/
+
+Aquafitness
+https://www.pfitzenmeier.de/kurse/aqua-fitness/
+https://www.holmesplace.de/gruppenkurse-c/aqua
+
+
+Idee:
+also was ist meine Idee: dass ich mochte 3 Abschnitt haben also 3 grose abteilung haben 1. da benotige ich reale webseite haben was um Gesunde ernahrung geht: mehrere rezeptseiten, tippen, menü, bio usw also alles was allgemein einen gesunde Ernahrung in bezug ist. das bedeut dass meine platform muss moglichkeit der nutzer geben dass alles in einem Seite einfach finden und je nach wunsch eine dawon auswahlen, reinspringen und genauere Info direkt vom Webseite erhalten. also benotige dass an meinen Platform diese Webseiten muss integriert werden so dass navigieren konnen. 2. ganz gleich fur Fitnessstudios, muss alle fitnes und nicht nur fitnes sondern joga, Muskultreining, Aquatreinin, pilates, also was mit gesundheit zu tun hat autentische links da sein alle in einem. die 3 ist bisschen schwer zu implementieren, weil da ich meine wie es moglich ist also in diesem Abteilung man kann eigene tagliche plan von Nahrungsmittel haben. nun ich benotige alle autentische Webseite was du mir finden kann fur Abteilung 1 mir geben erstes mal. nur diese webseite benotige erstes mal
+
+
+sehr gut, nun mussen wir unsere Webseite entwickeln also bereich Fitness & Bewegung. entsprechende kode fur diese Page ist index.html (wenn du brauchst, sag mir bescheid und gebe dir diese code). Ziel ist wenn unten mittlere bild oder text Fitness & Bewegung
+Entdecke Trainingsprogramme für Yoga, Krafttraining, Pilates und mehr. sowie oben in header auf dem text Fitness & Bewegung  kliken muss eine page reinspringen, wo eine autentische fintnes yoga usw anbieter webseite integriert sein muss und mit einem klick können wir entsprechende webseite reinspringen und anschauen. die styl und visualisation bitte entsprechend sein muss wie auf dem screenschot also muss unsere Projektstyl entsprechen. gebe mir korrekturen fur index.html sowie neue kode fur eine Seite fur fitness_bewegung.html. die fotos fur logos kannst du von Order: Image Fitness, name des Fotos: holmesplace, clever-fit, fitnessfirst, fitnessoase, fitx, kieser, pfitzenmeier, pilatesbee, pilatesberlin, yogaeasy. die anbieter-Webseiten: Fitness 
+https://www.fitnessfirst.de/clubs
+https://www.clever-fit.com/de/
+https://www.fitx.de/
+https://www.kieser.de/
+
+Yoga, Pilates, Muskultrainin
+https://www.yogaeasy.de/artikel/yoga-fuer-anfaenger
+https://pilatesberlin.de/en/
+https://pilatesbee.de/
+https://www.fitnessoase-querfurt.de/gezieltes-muskeltraining/
+
+Aquatraining
+https://www.pfitzenmeier.de/kurse/aqua-fitness/
+https://www.holmesplace.de/gruppenkurse-c/aqua. daher benotige ich drei bereich auf diesem Seite. Iede bereich muss untereinander sein und mit grune zeile getrennt als gränze und Begriffe 1. Fitness,  2. Yoga, Pilates, Muskultrainin 3. Aquatraining und darunter entsprechende linke und blocke wie auf dem screenschot. Analisiere bitte Zipdatei da ist style.css und bitte entsprechende Styl visualisation farben einhalten und mir so geben. verstehst du alles richtig was ich brauche?
+
+.fitness-anbieter-box {
+  width: 220px;
+  height: 240px; /* Feste Höhe sorgt für gleiche Größe */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #d9f7cc;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: #000;
+  transition: transform 0.2s;
+  text-align: center;
+}
+
+.fitness-anbieter-box:hover {
+  transform: scale(1.05);
+}
+
+.fitness-anbieter-box img {
+  width: auto;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.fitness-anbieter-box h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+  height: 40px; /* Gleiche Höhe für alle Titel */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Zugang – SmartWellness</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+      <a href="index.html" style="text-decoration: none; color: inherit;">
+        <h1 class="logo">SmartWellness</h1>
+      </a>
+      <nav class="navigation">
+        <a href="gesunde_ernaehrung.html">Ernährung & Rezepte</a>
+        <a href="fitness_bewegung.html">Fitness & Bewegung</a>
+      </nav>
+    </header>
+
+    <main class="zugang-container">
+        <h2>Individueller Plan</h2>
+        <h3 class="zugang-subheading">Registrieren Sie sich oder loggen Sie sich ein!</h3>
+
+        <div class="login-wrapper">
+            <p>Neu auf Smartwellness?</p>
+            <a href="register.html" class="button-green button-disabled" id="registerButton">Registrieren</a>
+
+            <p>Ich habe bereits ein Smartwellness-Konto</p>
+            <a href="login.html" class="button-gray button-disabled" id="loginButton">Einloggen</a>
+
+            <!-- Datenschutz Checkbox -->
+            <div class="datenschutz-check">
+                <input type="checkbox" id="datenschutz" />
+                <label for="datenschutz">
+                    Ich akzeptiere die <a href="datenschutz.html" target="_blank">Datenschutzbestimmungen</a>
+                </label>
+            </div>
+        </div>
+    </main>
+
+<footer class="footer">
+  <p>&copy; 2025 SmartWellness – <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
+</footer>
+
+<script>
+document.getElementById('datenschutz').addEventListener('change', function() {
+    const registerBtn = document.getElementById('registerButton');
+    const loginBtn = document.getElementById('loginButton');
+    if (this.checked) {
+        registerBtn.classList.remove('button-disabled');
+        loginBtn.classList.remove('button-disabled');
+        registerBtn.style.pointerEvents = 'auto';
+        loginBtn.style.pointerEvents = 'auto';
+        registerBtn.style.opacity = '1';
+        loginBtn.style.opacity = '1';
+    } else {
+        registerBtn.classList.add('button-disabled');
+        loginBtn.classList.add('button-disabled');
+        registerBtn.style.pointerEvents = 'none';
+        loginBtn.style.pointerEvents = 'none';
+        registerBtn.style.opacity = '0.5';
+        loginBtn.style.opacity = '0.5';
+    }
+});
+
+// Buttons beim Start deaktiviert
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('registerButton').style.pointerEvents = 'none';
+    document.getElementById('loginButton').style.pointerEvents = 'none';
+    document.getElementById('registerButton').style.opacity = '0.5';
+    document.getElementById('loginButton').style.opacity = '0.5';
+});
+</script>
+
+</body>
+</html>

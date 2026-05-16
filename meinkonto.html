@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Mein Konto – SmartWellness</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+ <header class="header">
+  <h1 class="logo">
+    <a href="index.html" style="text-decoration: none; color: inherit;">SmartWellness</a>
+  </h1>
+  <div class="nav-user-container">
+    <div class="nav-user-combined">
+      <nav class="navigation">
+        <a href="gesunde_ernaehrung.html">Ernährung & Rezepte</a>
+        <a href="fitness_bewegung.html">Fitness & Bewegung</a>
+      </nav>
+
+      <div class="user-dropdown" id="userDropdown">
+        <span id="userName">👤 <?php echo $vorname . " " . $nachname; ?></span>
+        <div class="dropdown-content" id="userMenu" style="display: none;">
+          <a href="meinkonto.html">Mein Konto</a>
+          <a href="#" onclick="logout()">Ausloggen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  <main class="konto-container">
+    <div class="konto-bereich">
+      <h3>Identität</h3>
+      <div class="konto-daten">
+        <p>
+          <span class="label">Vorname:</span>
+          <span id="vorname" class="value">-</span>
+        </p>
+        <p>
+          <span class="label">Nachname:</span>
+          <span id="nachname" class="value">-</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="konto-bereich">
+      <h3>Kontaktdaten</h3>
+      <div class="konto-daten">
+        <p>
+          <span class="label">E-Mail:</span>
+          <span id="email" class="value">-</span>
+          <input type="email" id="emailInput" class="edit-input">
+          <span class="edit-icon" onclick="enableEdit('email')">✏️</span>
+        </p>
+        <p>
+          <span class="label">Telefon:</span>
+          <span id="telefon" class="value">-</span>
+          <input type="number" id="telefonInput" class="edit-input">
+          <span class="edit-icon" onclick="enableEdit('telefon')">✏️</span>
+        </p>
+        <p>
+          <span class="label">Geburtsdatum:</span>
+          <span id="geburtstag" class="value">-</span>
+          <input type="date" id="geburtstagInput" class="edit-input">
+          <span class="edit-icon" onclick="enableEdit('geburtstag')">✏️</span>
+        </p>
+        <button class="speichern-button" onclick="updateKontoDaten()">Daten speichern</button>
+        <p id="update-feedback" class="success-message" style="display: none;"></p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    fetch("session_user.php")
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          document.getElementById("vorname").textContent = data.vorname;
+          document.getElementById("nachname").textContent = data.nachname;
+          document.getElementById("email").textContent = data.email;
+          document.getElementById("telefon").textContent = data.telefon;
+          document.getElementById("geburtstag").textContent = data.geburtstag;
+
+          document.getElementById("emailInput").value = data.email;
+          document.getElementById("telefonInput").value = data.telefon;
+          document.getElementById("geburtstagInput").value = data.geburtstag;
+
+          document.getElementById("userName").textContent = "👤 " + data.vorname + " " + data.nachname;
+        } else {
+          window.location.href = "login.html";
+        }
+      });
+
+    function enableEdit(field) {
+      const valueSpan = document.getElementById(field);
+      const inputField = document.getElementById(field + "Input");
+
+      inputField.value = valueSpan.textContent.trim();
+      valueSpan.style.display = "none";
+      inputField.style.display = "inline-block";
+      inputField.focus();
+    }
+
+    function updateKontoDaten() {
+      const formData = new FormData();
+      formData.append("email", document.getElementById("emailInput").value);
+      formData.append("telefon", document.getElementById("telefonInput").value);
+      formData.append("geburtstag", document.getElementById("geburtstagInput").value);
+
+      fetch("update_user.php", {
+        method: "POST",
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        const feedback = document.getElementById("update-feedback");
+        feedback.textContent = data.message;
+        feedback.style.display = "block";
+        feedback.style.color = data.success ? "green" : "red";
+
+        if (data.success) {
+            document.getElementById("email").textContent = formData.get("email");
+            document.getElementById("telefon").textContent = formData.get("telefon");
+            document.getElementById("geburtstag").textContent = formData.get("geburtstag");
+        }
+
+    //  Felder immer zurücksetzen, auch bei "Keine Änderung"
+            ["email", "telefon", "geburtstag"].forEach(field => {
+                document.getElementById(field).style.display = 'inline';
+                document.getElementById(field + "Input").style.display = 'none';
+            });
+        });
+    }
+
+    function logout() {
+      fetch("logout.php").then(() => {
+        window.location.href = "login.html";
+      });
+    }
+
+    document.getElementById("userDropdown").addEventListener("click", function () {
+      const menu = document.getElementById("userMenu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    });
+  </script>
+  <footer class="footer">
+  <p>&copy; 2025 SmartWellness – <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
+</footer>
+
+</body>
+</html>

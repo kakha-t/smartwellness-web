@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrieren – SmartWellness</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script>
+    window.onload = function() {
+        const form = document.querySelector("form");
+        
+        if (localStorage.getItem('registrationSuccess') === 'true') {
+                const message = document.createElement('p');
+                message.innerHTML = '✅ Registrierung erfolgreich! <a href="login.html">Jetzt einloggen</a>';
+                message.style.color = 'green';
+                message.style.fontWeight = 'normal';
+                message.style.marginTop = '20px';
+                form.insertBefore(message, form.firstChild);
+                localStorage.removeItem('registrationSuccess');
+        }
+
+        if (localStorage.getItem('registrationError') === 'true') {
+            const error = document.createElement("p");
+            error.style.color = "red";
+            error.style.fontWeight = "normal";
+            error.textContent = "❌ Diese E-Mail ist bereits registriert. Bitte andere E-Mail verwenden!";
+            form.insertBefore(error, form.firstChild);
+            localStorage.removeItem('registrationError');
+        }
+    };
+</script>
+</head>
+<body>
+    <header class="header">
+  <h1 class="logo">
+    <a href="index.html" style="text-decoration: none; color: inherit;">SmartWellness</a>
+  </h1>
+  <div class="nav-user-container">
+    <div class="nav-user-combined">
+      <nav class="navigation">
+        <a href="gesunde_ernaehrung.html">Ernährung & Rezepte</a>
+        <a href="fitness_bewegung.html">Fitness & Bewegung</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+    <main class="main-register">
+        <a href="zugang.html" class="zurueck-icon" title="Zurück">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="green" viewBox="0 0 24 24">
+            <path d="M15.5 5l-7 7 7 7" stroke="green" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </a>
+
+        <h2>Registrierung</h2>
+
+        <div id="registration-message"></div>
+
+        <form action="register.php" method="post" class="form-box">
+            <label for="vorname">Vorname:</label>
+            <input type="text" id="vorname" name="vorname" required>
+
+            <label for="nachname">Nachname:</label>
+            <input type="text" id="nachname" name="nachname" required>
+
+            <label for="email">E-Mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Telefonnummer:</label>
+            <input type="number" id="phone" name="phone">
+
+            <label for="geburtstag">Geburtsdatum:</label>
+            <input type="date" id="geburtstag" name="geburtstag" required>
+
+            <label for="password">Passwort:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Registrieren</button>
+        </form>
+
+        <p>Schon registriert? <a href="login.html">Hier anmelden</a></p>
+    </main>
+    <footer class="footer">
+  <p>&copy; 2025 SmartWellness – <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
+</footer>
+</body>
+</html>
